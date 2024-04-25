@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+body,html {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#calcBody {
+    border: 1px solid black;
+    width: 300px;
+
+}
+
+#display {
+    border: 1px solid orange;
+    height: 50px;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+#buttons {
+    border: 1px solid blue;
+    box-sizing: content-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#buttons > .btn {
+    border: 1px solid red;
+    height: 50px;
+    width: 50px;
+    padding: 1px;
+    text-align: center;
+}
