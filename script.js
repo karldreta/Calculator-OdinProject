@@ -29,11 +29,11 @@ const multiply = function (a, b) {
     return a * b;
 };
 const divide = function (a,b) {
-    // if (a === 0) {
-    //     return "LOL";
-    // } else {
+    if (a === 0) {
+        return "LOL";
+    } else {
         return b / a;
-    // }
+    }
 };
 // ------------->
 
@@ -55,7 +55,7 @@ function operate() {
         result = divide(a,b);
     };
 
-    if(a == '' || b == '' || operator == '') {
+    if(a === '' || b === '' || operator === '') {
         firstNum = '';
         lastNum = '';
         operator = '';
@@ -65,16 +65,12 @@ function operate() {
     if(isNaN(result) && result != "LOL") {result = 0;}
 
     display.textContent = result;
-
     return result;
 };
 // ------------->
 
 
 function handleNum (event) {
-    if (lastEqual == 1) {
-        display.textContent = '';
-    }
     if (display.textContent == 0) {display.textContent = '';}
         display.textContent += event.target.textContent;
         let input = event.target.textContent;
@@ -95,7 +91,7 @@ function handleOp(event) {
         lastNum = firstNum;
         firstNum = "";
     } else {
-        const lastChar = display.textContent.slice(-1).trim();
+        const lastChar = display.textContent.slice(-1);
         if (isOperator(lastChar)) {
             display.textContent = display.textContent.slice(0, -1) + event.target.textContent;
             operator = event.target.textContent;
