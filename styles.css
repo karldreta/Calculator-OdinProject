@@ -16,26 +16,48 @@ body,html {
 
 }
 
+
 #display {
     border: 1px solid orange;
     height: 50px;
+    padding: 15px;
     margin: 10px;
     margin-bottom: 20px;
+    text-align: right;
+}
+
+button {
+    background-color: white;
 }
 
 #buttons {
     border: 1px solid blue;
-    box-sizing: content-box;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     margin: 10px;
 }
 
-#buttons > .btn {
+
+#buttons > .numbersBtns {
+    border: 1px solid yellow;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+#buttons > .numbersBtns > .btn,
+#buttons > .operatorsBtns > .btn,
+#buttons > .noDisplayBtns > * {
     border: 1px solid red;
     height: 50px;
     width: 50px;
-    padding: 1px;
     text-align: center;
+}
+
+.btn:hover {
+    transform: scale(1.07);
+}
+
+.noDisplayBtns > *:hover {
+    transform: scale(1.07);
 }

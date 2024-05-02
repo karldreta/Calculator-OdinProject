@@ -5,27 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calc U Later</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div id="calcBody">
-        <div id="display"></div>
+        <div id="display">0</div>
         <div id="buttons">
-            <div class="btn divide">/</div>
-            <div class="btn multiply">*</div>
-            <div class="btn subtract">-</div>
-            <div class="btn add">+</div>
-            <div class="btn clear">Clear</div>
-            <div class="btn num9">9</div>
-            <div class="btn num8">8</div>
-            <div class="btn num7">7</div>
-            <div class="btn num6">6</div>
-            <div class="btn num5">5</div>
-            <div class="btn num4">4</div>
-            <div class="btn num3">3</div>
-            <div class="btn num2">2</div>
-            <div class="btn num1">1</div>
-            <div class="btn num0">0</div>
+            <div class="numbersBtns">
+                <button id="num9" class="btn numBtn">9</button>
+                <button id="num8" class="btn numBtn">8</button>
+                <button id="num7" class="btn numBtn">7</button>
+                <button id="num6" class="btn numBtn">6</button>
+                <button id="num5" class="btn numBtn">5</button>
+                <button id="num4" class="btn numBtn">4</button>
+                <button id="num3" class="btn numBtn">3</button>
+                <button id="num2" class="btn numBtn">2</button>
+                <button id="num1" class="btn numBtn">1</button>
+                <button id="num0" class="btn numBtn">0</button>                
+            </div>
+            <div class="operatorsBtns">
+                <button id="buttonide" class="btn operateBtn">/</button>
+                <button id="multiply" class="btn operateBtn">*</button>
+                <button id="subtract" class="btn operateBtn">-</button>
+                <button id="add" class="btn operateBtn">+</button>                
+            </div>
+            <div class = "noDisplayBtns">
+                <button id="clear">AC</button>
+                <button id="equals">=</button>
+            </div>
         </div>
     </div>
 </body>
