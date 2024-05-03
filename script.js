@@ -96,6 +96,12 @@ function handleNum (event) {
 }
 
 function handleOp(event) {
+    if (firstNum === '' && (event.target.textContent === '-' || event.target.textContent === '+')) {
+        firstNum += event.target.textContent;
+        operator = '';
+        display.textContent = firstNum;
+        return;
+    }
 
     function isOperator(char) {
         const operators = ["+", "-", "*", "/"];
@@ -133,12 +139,3 @@ function handleOp(event) {
 
 
 // Create a display function to separate the operator
-
-// Do negative or positive number first ---->
-// if (firstNum === '' && (event.target.textContent === '-' || event.target.textContent === '+')) {
-//     // Exit early if firstNum is empty and the input is '-' or '+'
-//     console.log(firstNum);
-//     console.log(operator);
-//     console.log(lastNum);
-//     return;
-// }
