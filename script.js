@@ -4,7 +4,7 @@ numBtn.forEach(button => button.addEventListener('click', handleNum));
 const operateBtn = document.querySelectorAll('.operateBtn');
 operateBtn.forEach(button => button.addEventListener('click', handleOp));
 const equals = document.querySelector('#equals');
-equals.addEventListener('click', operate);
+equals.addEventListener('click', inputEquals);
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
     display.textContent = 0;
@@ -69,12 +69,30 @@ function operate() {
 };
 // ------------->
 
+let isEqualsPressed = false;
+
+function inputEquals() {
+    operate();
+    firstNum = operate();
+    isEqualsPressed = true;
+}
+
 
 function handleNum (event) {
-    if (display.textContent == 0) {display.textContent = '';}
-        display.textContent += event.target.textContent;
-        let input = event.target.textContent;
-        firstNum += input;
+
+    if (isEqualsPressed && !isNaN(event.target.textContent)) {
+        display.textContent = '';
+        isEqualsPressed = false;
+        firstNum = '';
+        lastNum = '';
+        operator = '';
+    } else if (display.textContent == 0) {
+        display.textContent = '';
+        isEqualsPressed = false;
+    }
+    display.textContent += event.target.textContent;
+    let input = event.target.textContent;
+    firstNum += input;
 }
 
 function handleOp(event) {
@@ -82,6 +100,14 @@ function handleOp(event) {
     function isOperator(char) {
         const operators = ["+", "-", "*", "/"];
         return operators.includes(char);
+    }
+    
+    if (isEqualsPressed && isOperator(event.target.textContent)) {
+        display.textContent += `${operator}`;
+        lastNum = firstNum;
+        operator = event.target.textContent;
+        firstNum = '';
+        isEqualsPressed = false;
     }
 
     if (operator === "") {
@@ -107,3 +133,12 @@ function handleOp(event) {
 
 
 // Create a display function to separate the operator
+
+// Do negative or positive number first ---->
+// if (firstNum === '' && (event.target.textContent === '-' || event.target.textContent === '+')) {
+//     // Exit early if firstNum is empty and the input is '-' or '+'
+//     console.log(firstNum);
+//     console.log(operator);
+//     console.log(lastNum);
+//     return;
+// }
