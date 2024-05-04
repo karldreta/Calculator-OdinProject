@@ -3,6 +3,8 @@ const numBtn = document.querySelectorAll('.numBtn');
 numBtn.forEach(button => button.addEventListener('click', handleNum));
 const operateBtn = document.querySelectorAll('.operateBtn');
 operateBtn.forEach(button => button.addEventListener('click', handleOp));
+const decimal = document.querySelector('#decimal');
+decimal.addEventListener('click', inputDecimal);
 const equals = document.querySelector('#equals');
 equals.addEventListener('click', inputEquals);
 const clear = document.querySelector('#clear');
@@ -12,6 +14,7 @@ clear.addEventListener('click', () => {
     lastNum = '';
     operator = '';
 });
+
 
 // Inputs
 let firstNum = "";
@@ -137,5 +140,10 @@ function handleOp(event) {
     }
 }
 
-
-// Create a display function to separate the operator
+function inputDecimal() {
+    if (display.textContent.includes('.') && firstNum.includes('.')) {return;};
+    if (firstNum.includes('.') && lastNum.includes('.')) {return;};
+    if (display.textContent == 0) {display.textContent = '';};
+    firstNum += event.target.textContent;
+    display.textContent += event.target.textContent;
+}
