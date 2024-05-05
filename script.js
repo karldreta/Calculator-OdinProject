@@ -7,9 +7,11 @@ const decimal = document.querySelector('#decimal');
 decimal.addEventListener('click', inputDecimal);
 const equals = document.querySelector('#equals');
 equals.addEventListener('click', inputEquals);
+const backspace = document.querySelector('#backspace');
+backspace.addEventListener('click', removeLastChar)
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
-    display.textContent = 0;
+    display.textContent = '0';
     firstNum = '';
     lastNum = '';
     operator = '';
@@ -54,7 +56,7 @@ function operate() {
         result = subtract(a,b);
     } else if (operator == "*") {
         result = multiply(a,b);
-    } else if (operator == "/") {
+    } else if (operator == "÷") {
         result = divide(a,b);
     };
 
@@ -77,6 +79,7 @@ let isEqualsPressed = false;
 function inputEquals() {
     operate();
     firstNum = operate();
+    lastNum = '';
     isEqualsPressed = true;
 }
 
@@ -98,17 +101,17 @@ function handleNum (event) {
     firstNum += input;
 }
 
+function isOperator(char) {
+    const operators = ["+", "-", "*", "÷"];
+    return operators.includes(char);
+}
+
 function handleOp(event) {
     if (firstNum === '' && (event.target.textContent === '-' || event.target.textContent === '+')) {
         firstNum += event.target.textContent;
         operator = '';
         display.textContent = firstNum;
         return;
-    }
-
-    function isOperator(char) {
-        const operators = ["+", "-", "*", "/"];
-        return operators.includes(char);
     }
     
     if (isEqualsPressed && isOperator(event.target.textContent)) {
@@ -146,4 +149,22 @@ function inputDecimal() {
     if (display.textContent == 0) {display.textContent = '';};
     firstNum += event.target.textContent;
     display.textContent += event.target.textContent;
+}
+
+function removeLastChar() {
+
+    if (display.textContent == 0) {return} else {
+        firstNum = firstNum.toString().slice(0, -1);
+    }
+
+    if (isOperator(display.textContent.slice(-1))){
+        operator = '';
+        firstNum = lastNum;
+        lastNum = '';
+        display.textContent = firstNum;
+    } else if (lastNum != '') {
+        display.textContent = `${lastNum}${operator}${firstNum}`;
+    } else {
+        display.textContent = firstNum;
+    }
 }
