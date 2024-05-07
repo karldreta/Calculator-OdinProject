@@ -6,36 +6,36 @@
     <title>Calc U Later</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Jersey+25+Charted&family=Poetsen+One&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
 <body>
     <div id="calcBody">
         <div id="display">0</div>
         <div id="buttons">
-            <div class="numbersBtns">
-                <button id="num9" class="btn numBtn">9</button>
-                <button id="num8" class="btn numBtn">8</button>
-                <button id="num7" class="btn numBtn">7</button>
-                <button id="num6" class="btn numBtn">6</button>
-                <button id="num5" class="btn numBtn">5</button>
-                <button id="num4" class="btn numBtn">4</button>
-                <button id="num3" class="btn numBtn">3</button>
-                <button id="num2" class="btn numBtn">2</button>
-                <button id="num1" class="btn numBtn">1</button>
-                <button id="num0" class="btn numBtn">0</button>  
-                <button id="decimal" class="btn decBtn">.</button>
-            </div>
-            <div class="operatorsBtns">
+            <div class="top-btns">
+                <button id="clear" class="btn">AC</button>
+                <button id="backspace" class="btn fa-solid fa-delete-left"></button>
                 <button id="divide" class="btn operateBtn">÷</button>
-                <button id="multiply" class="btn operateBtn">*</button>
-                <button id="subtract" class="btn operateBtn">-</button>
-                <button id="add" class="btn operateBtn">+</button>                
             </div>
-            <div class = "noDisplayBtns">
-                <button id="backspace" class="fa-solid fa-delete-left"></button>
-                <button id="clear">AC</button>
-                <button id="equals">=</button>
-                
+            <div class="mid-btns">
+                <button id="num7" class="btn numBtn">7</button>
+                <button id="num8" class="btn numBtn">8</button>
+                <button id="num9" class="btn numBtn">9</button>
+                <button id="multiply" class="btn operateBtn">x</button>
+                <button id="num4" class="btn numBtn">4</button>
+                <button id="num5" class="btn numBtn">5</button>
+                <button id="num6" class="btn numBtn">6</button>
+                <button id="subtract" class="btn operateBtn">-</button>
+                <button id="num1" class="btn numBtn">1</button>
+                <button id="num2" class="btn numBtn">2</button>
+                <button id="num3" class="btn numBtn">3</button>
+                <button id="add" class="btn operateBtn">+</button>  
+            </div>
+            <div class="bot-btns">
+                <button id="decimal" class="btn decBtn">.</button>
+                <button id="num0" class="btn numBtn">0</button> 
+                <button id="equals" class="btn">=</button>
             </div>
         </div>
     </div>

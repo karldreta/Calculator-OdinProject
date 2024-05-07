@@ -1,5 +1,9 @@
 * {
     box-sizing: border-box;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
 }
 
 body,html {
@@ -13,14 +17,16 @@ body,html {
 #calcBody {
     border: 1px solid black;
     width: 300px;
+    justify-content: center;
 
 }
 
 
 #display {
+    font-size: 54px;
     border: 1px solid orange;
-    height: 50px;
-    padding: 15px;
+    height: 150px;
+    padding: 70px 10px 0px 10px;
     margin: 10px;
     margin-bottom: 20px;
     text-align: right;
@@ -28,36 +34,54 @@ body,html {
 
 button {
     background-color: white;
+    margin-right: 10px;
+    /* margin-left: 10px; */
+    margin-bottom: 12px;
 }
 
 #buttons {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
+    width: 279px;
+    height: 302px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin: 10px;
 }
 
-
-#buttons > .numbersBtns {
-    border: 1px solid yellow;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-#buttons > .numbersBtns > .btn,
-#buttons > .operatorsBtns > .btn,
-#buttons > .noDisplayBtns > * {
-    border: 1px solid red;
-    height: 50px;
+.btn {
     width: 50px;
-    text-align: center;
+    height: 50px;
 }
 
+.top-btns {
+    /* border: 1px solid red; */
+    /* width: 274px; */
+    margin-left: 15px;
+}
+
+.mid-btns {
+    /* border: 1px solid green; */
+    /* width: 274px; */
+    margin-left: 15px;
+}
+
+.bot-btns {
+    /* border: 1px solid orangered; */
+    /* width: 274px; */
+    margin-left: 15px;
+}
+
+
+#clear,
+#equals {
+    width: 115px;
+}
+
+#backspace {
+    position: relative;
+    padding: 0px;
+    bottom: 1px;
+}
 .btn:hover {
-    transform: scale(1.07);
-}
-
-.noDisplayBtns > *:hover {
     transform: scale(1.07);
 }

@@ -11,6 +11,7 @@ const backspace = document.querySelector('#backspace');
 backspace.addEventListener('click', removeLastChar)
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
+    display.setAttribute("style", "border-color: orange; background: white;");
     display.textContent = '0';
     firstNum = '';
     lastNum = '';
@@ -54,7 +55,7 @@ function operate() {
        result = add(a,b);
     } else if (operator == "-") {
         result = subtract(a,b);
-    } else if (operator == "*") {
+    } else if (operator == "x") {
         result = multiply(a,b);
     } else if (operator == "÷") {
         result = divide(a,b);
@@ -81,10 +82,15 @@ function inputEquals() {
     firstNum = operate();
     lastNum = '';
     isEqualsPressed = true;
+    display.setAttribute("style", "border-color: orange; background: white;");
 }
 
 
 function handleNum (event) {
+    if (display.textContent.length >= 7) {
+        display.setAttribute("style", "border-color: Red; background: white;");
+        return
+    }
 
     if (isEqualsPressed && !isNaN(event.target.textContent)) {
         display.textContent = '';
@@ -102,12 +108,17 @@ function handleNum (event) {
 }
 
 function isOperator(char) {
-    const operators = ["+", "-", "*", "÷"];
+    const operators = ["+", "-", "x", "÷"];
     return operators.includes(char);
 }
 
 function handleOp(event) {
-    if (firstNum === '' && (event.target.textContent === '-' || event.target.textContent === '+')) {
+    if (display.textContent.length >= 7 && !isOperator(event.target.textContent)) {
+        return
+    }
+
+
+    if ((firstNum === '' && lastNum === '')&& (event.target.textContent === '-' || event.target.textContent === '+')) {
         firstNum += event.target.textContent;
         operator = '';
         display.textContent = firstNum;
@@ -152,7 +163,6 @@ function inputDecimal() {
 }
 
 function removeLastChar() {
-
     if (display.textContent == 0) {return} else {
         firstNum = firstNum.toString().slice(0, -1);
     }
@@ -167,4 +177,6 @@ function removeLastChar() {
     } else {
         display.textContent = firstNum;
     }
+
+    display.setAttribute("style", "border-color: orange; background: white;");
 }
