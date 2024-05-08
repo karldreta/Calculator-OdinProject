@@ -1,46 +1,55 @@
 * {
     box-sizing: border-box;
-    font-family: "Poetsen One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 20px;
+    font: 400 normal 20px "Poetsen One", sans-serif;
 }
 
-body,html {
+:root {
+    --pageBg: #ffffff;
+    --calcBg: #f2f2f2;
+    --dsplyBg: #e0e0e0;
+    --dsplyBrdr: #333333;
+    --btnBg: #333333;
+    --txtClr: #000000;
+}
+
+body, html {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
+    background-color: var(--pageBg);
 }
 
 #calcBody {
-    border: 1px solid black;
+    color: var(--txtClr);
+    background-color: var(--calcBg);
+    border: 3px solid black;
     width: 300px;
     justify-content: center;
-
+    border-radius: 50px;
+    box-shadow: 15px 15px black;
 }
 
-
 #display {
-    font-size: 54px;
-    border: 1px solid orange;
+    font-size: 46px;
+    border: 3px solid var(--dsplyBrdr);
+    background-color: var(--dsplyBg);
     height: 150px;
     padding: 70px 10px 0px 10px;
     margin: 10px;
     margin-bottom: 20px;
     text-align: right;
+    border-radius: 40px;
 }
 
 button {
-    background-color: white;
     margin-right: 10px;
-    /* margin-left: 10px; */
     margin-bottom: 12px;
+    border-radius: 50px;
 }
 
 #buttons {
-    /* border: 1px solid blue; */
     width: 279px;
     height: 302px;
     display: flex;
@@ -51,37 +60,57 @@ button {
 .btn {
     width: 50px;
     height: 50px;
+    border: none;
 }
 
-.top-btns {
-    /* border: 1px solid red; */
-    /* width: 274px; */
-    margin-left: 15px;
-}
-
-.mid-btns {
-    /* border: 1px solid green; */
-    /* width: 274px; */
-    margin-left: 15px;
-}
-
+.top-btns,
+.mid-btns,
 .bot-btns {
-    /* border: 1px solid orangered; */
-    /* width: 274px; */
     margin-left: 15px;
 }
-
 
 #clear,
 #equals {
     width: 115px;
+    background-color: #8b0000;
+    color: #ffffff;
+    box-shadow: 5px 7px #5c0000;
 }
 
+/* Style for operator, decimal, and backspace buttons */
+.operateBtn,
+#decimal,
 #backspace {
-    position: relative;
-    padding: 0px;
-    bottom: 1px;
+    background-color: #383838;
+    color: #ffffff;
+    box-shadow: 5px 7px #1e1e1e;
 }
-.btn:hover {
-    transform: scale(1.07);
+
+/* Style for number buttons */
+.numBtn {
+    border: 1px solid #000000;
+    background-color: #f2f2f2;
+    color: #000000;
+    box-shadow: 5px 7px #b3b3b3;
+}
+
+/* Style for clear and equals buttons */
+#clear:hover,
+#equals:hover {
+    transform: scale(1.09);
+    box-shadow: 2px 4px rgba(92, 0, 0, 0.9);
+}
+
+/* Style for operator, decimal, and backspace buttons */
+.operateBtn:hover,
+#decimal:hover,
+#backspace:hover {
+    transform: scale(1.09);
+    box-shadow: 2px 4px rgba(30, 30, 30, 0.9);
+}
+
+/* Style for number buttons */
+.numBtn:hover {
+    transform: scale(1.09);
+    box-shadow: 2px 4px rgba(179, 179, 179, 0.9);
 }

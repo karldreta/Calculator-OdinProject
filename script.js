@@ -11,7 +11,7 @@ const backspace = document.querySelector('#backspace');
 backspace.addEventListener('click', removeLastChar)
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
-    display.setAttribute("style", "border-color: orange; background: white;");
+    display.setAttribute("style", "border-color: #333333;");
     display.textContent = '0';
     firstNum = '';
     lastNum = '';
@@ -68,7 +68,13 @@ function operate() {
         result = 0
     }
 
-    if(isNaN(result) && result != "LOL") {result = 0;}
+    if (result.toString().includes(".")) {
+        result = parseFloat(result.toFixed(2));
+    }
+
+    if(isNaN(result) && result != "LOL") {
+        result = 0
+    };
 
     display.textContent = result;
     return result;
@@ -82,13 +88,14 @@ function inputEquals() {
     firstNum = operate();
     lastNum = '';
     isEqualsPressed = true;
-    display.setAttribute("style", "border-color: orange; background: white;");
+    display.setAttribute("style", "border-color: #333333;");
 }
 
 
 function handleNum (event) {
-    if (display.textContent.length >= 7) {
-        display.setAttribute("style", "border-color: Red; background: white;");
+    let displayContent = display.textContent.replace(/\./g, '');
+    if (displayContent.length >= 8) {
+        display.setAttribute("style", "border-color: #8b0000; transform: scale(1.02);");
         return
     }
 
@@ -113,10 +120,10 @@ function isOperator(char) {
 }
 
 function handleOp(event) {
-    if (display.textContent.length >= 7 && !isOperator(event.target.textContent)) {
+    let displayContent = display.textContent.replace(/\./g, '');
+    if (displayContent.length >= 7 && !isOperator(event.target.textContent)) {
         return
     }
-
 
     if ((firstNum === '' && lastNum === '')&& (event.target.textContent === '-' || event.target.textContent === '+')) {
         firstNum += event.target.textContent;
@@ -137,7 +144,7 @@ function handleOp(event) {
         operator = event.target.textContent;
         if (display.textContent == 0) {display.textContent = '';}
         display.textContent += `${operator}`;
-        lastNum = firstNum;
+        lastNum = firstNum; // Sets the first operand equal to the numbers before the operator
         firstNum = "";
     } else {
         const lastChar = display.textContent.slice(-1);
@@ -146,6 +153,7 @@ function handleOp(event) {
             operator = event.target.textContent;
         } else {
             operate();
+            display.setAttribute("style", "border-color: #333333;");
             lastNum = operate();
             operator = event.target.textContent;
             display.textContent += `${operator}`;
@@ -169,7 +177,7 @@ function removeLastChar() {
 
     if (isOperator(display.textContent.slice(-1))){
         operator = '';
-        firstNum = lastNum;
+        firstNum = lastNum; // Reverses the last operand back to the numbers before the operator (see handleOP()).
         lastNum = '';
         display.textContent = firstNum;
     } else if (lastNum != '') {
@@ -178,5 +186,5 @@ function removeLastChar() {
         display.textContent = firstNum;
     }
 
-    display.setAttribute("style", "border-color: orange; background: white;");
+    display.setAttribute("style", "border-color: #333333;");
 }
