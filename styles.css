@@ -49,6 +49,10 @@ button {
     border-radius: 50px;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 #buttons {
     width: 279px;
     height: 302px;

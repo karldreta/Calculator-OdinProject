@@ -5,6 +5,8 @@
 
 --- Just gimme yo numbers and I'll Calc U Later.
 
+###  [See Live Preview](https://karldreta.github.io/calculator-odinProject/)
+
 ## Here I will synthesize everything I learned from HTML,CSS and Javascript to create a calculator from scratch.
 
 
