@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     font: 400 normal 20px "Poetsen One", sans-serif;
+    outline: none;
 }
 
 :root {

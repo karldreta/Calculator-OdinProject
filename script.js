@@ -64,7 +64,7 @@ function operate() {
     if(a === '' || b === '' || operator === '') {
         firstNum = '';
         lastNum = '';
-        operator = '';
+        operator = ''; 
         result = 0
     }
 
@@ -98,7 +98,6 @@ function handleNum (event) {
         display.setAttribute("style", "border-color: #8b0000; transform: scale(1.02);");
         return
     }
-
     if (isEqualsPressed && !isNaN(event.target.textContent)) {
         display.textContent = '';
         isEqualsPressed = false;
@@ -187,4 +186,110 @@ function removeLastChar() {
     }
 
     display.setAttribute("style", "border-color: #333333;");
+}
+
+
+// Keyboard shortcuts
+
+const body = document.querySelector("body");
+
+body.addEventListener("keydown", (event) => {
+    let key = event.key;
+    // console.log(key);
+    const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    const operators = ["+", "-", "*", "/"];
+    switch (true) {
+        case numbers.includes(key):
+            handleNumFromKeyboard(key);
+            break;
+        case operators.includes(key):
+            handleOpFromKeyboard(key);
+            break;
+        case key == ".":
+            console.log(key);
+            inputDecimalFromKeyboard(key);
+            break;
+        case key == "=" || key == "Enter":
+            operate();
+            break;
+        case key == "Backspace":
+            removeLastChar();
+            break;
+    }
+
+});
+
+function handleNumFromKeyboard(key) {
+    let displayContent = display.textContent.replace(/\./g, '');
+    if (displayContent.length >= 8) {
+        display.setAttribute("style", "border-color: #8b0000; transform: scale(1.02);");
+        return
+    }
+    if (isEqualsPressed && !isNaN(key)) {
+        display.textContent = '';
+        isEqualsPressed = false;
+        firstNum = '';
+        lastNum = '';
+        operator = '';
+    } else if (display.textContent == 0) {
+        display.textContent = '';
+        isEqualsPressed = false;
+    }
+    display.textContent += key;
+    let input = key;
+    firstNum += input;
+}
+
+function handleOpFromKeyboard(key) {
+    if(key == "/" ) {key = "÷"};
+    if(key == "*" ) {key = "x"};
+
+    let displayContent = display.textContent.replace(/\./g, '');
+    if (displayContent.length >= 7 && !isOperator(key)) {
+        return
+    }
+
+    if ((firstNum === '' && lastNum === '')&& (key === '-' || key === '+')) {
+        firstNum += key;
+        operator = '';
+        display.textContent = firstNum;
+        return;
+    }
+    
+    if (isEqualsPressed && isOperator(key)) {
+        display.textContent += `${operator}`;
+        lastNum = firstNum;
+        operator = key;
+        firstNum = '';
+        isEqualsPressed = false;
+    }
+
+    if (operator === "") {
+        operator = key;
+        if (display.textContent == 0) {display.textContent = '';}
+        display.textContent += `${operator}`;
+        lastNum = firstNum; // Sets the first operand equal to the numbers before the operator
+        firstNum = "";
+    } else {
+        const lastChar = display.textContent.slice(-1);
+        if (isOperator(lastChar)) {
+            display.textContent = display.textContent.slice(0, -1) + key;
+            operator = key;
+        } else {
+            operate();
+            display.setAttribute("style", "border-color: #333333;");
+            lastNum = operate();
+            operator = key;
+            display.textContent += `${operator}`;
+            firstNum = "";
+        }
+    }
+}
+
+function inputDecimalFromKeyboard(key) {
+    if (display.textContent.includes('.') && firstNum.includes('.')) {return;};
+    if (firstNum.includes('.') && lastNum.includes('.')) {return;};
+    if (display.textContent == 0) {display.textContent = '';};
+    firstNum += key;
+    display.textContent += key;
 }
