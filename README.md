@@ -4,7 +4,7 @@
 
 "Just gimme yo numbers and I'll Calc U Later."
 
-### [See Live Preview](https://karldreta.github.io/calculator-odinProject/)
+### [See Live Preview](https://karldreta.github.io/Calculator-OdinProject/)
 
 #### In this project, I will synthesize everything I learned about HTML, CSS, and JavaScript to create a calculator from scratch.
 
